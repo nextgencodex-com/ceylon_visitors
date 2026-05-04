@@ -71,7 +71,7 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
   )}`;
 
   return (
-    <section className={`relative overflow-hidden ${desktop ? "h-[575px]" : "h-[470px]"}`}>
+    <section className={`relative overflow-hidden ${desktop ? "h-[750px]" : "h-[580px]"}`}>
       <Image
         src="/images/hero.png"
         alt="Sri Lanka train journey"
@@ -85,15 +85,15 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 text-white">
         <h1
           className={`font-serif font-bold leading-[0.9] tracking-[-1px] ${
-            desktop ? "text-[56px]" : "text-[34px]"
+            desktop ? "text-[72px]" : "text-[42px]"
           }`}
         >
           Discover Sri Lanka
           <br />
-          <span className="text-[#d6a51d] italic">Your Way</span>
+          <span className="text-[#d8b62f] italic">Your Way</span>
         </h1>
 
-        <p className={`mt-7 max-w-[520px] leading-relaxed text-gray-200 ${desktop ? "text-[13px]" : "text-[11px]"}`}>
+        <p className={`mt-10 max-w-[620px] leading-relaxed text-gray-200 ${desktop ? "text-[16px]" : "text-[13px]"}`}>
           Private tours, trusted drivers, and unforgettable journeys across the
           island.
         </p>
