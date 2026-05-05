@@ -96,8 +96,8 @@ function FooterColumn({ title, items }: any) {
         {items.map((item: string, i: number) => {
           const linkMap: Record<string, string> = {
             Home: "/",
-            Tours: "/#tours",
-            Services: "/#services",
+            Tours: "/ceylon_visitors_Tours",
+            Services: "/ceylon_visitors_Services",
             About: "/ceylon_visitors_About",
             Reviews: "/ceylon_visitors_Reviews",
             Contact: "/ceylon_visitors_Contact",
