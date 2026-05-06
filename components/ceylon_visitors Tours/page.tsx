@@ -70,7 +70,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden rounded-[34px] mx-5 md:mx-[88px]">
         <Image
           src="/images/tours/tours-hero.jpg"
           alt="Tours Hero"

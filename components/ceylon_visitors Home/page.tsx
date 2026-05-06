@@ -71,7 +71,7 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
   )}`;
 
   return (
-    <section className={`relative overflow-hidden ${desktop ? "h-[750px]" : "h-[580px]"}`}>
+    <section className={`relative overflow-hidden rounded-[34px] mx-5 md:mx-[88px] ${desktop ? "h-[750px]" : "h-[580px]"}`}>
       <Image
         src="/images/hero.png"
         alt="Sri Lanka train journey"
