@@ -21,7 +21,7 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
-      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden rounded-[34px] mx-5 md:mx-[88px]">
         <Image
           src="/images/About/about-hero.jpg"
           alt="Sri Lankan temple art"

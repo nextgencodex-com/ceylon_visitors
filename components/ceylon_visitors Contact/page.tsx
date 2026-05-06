@@ -23,7 +23,7 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[420px] flex items-center justify-center text-center text-white">
+      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden rounded-[34px] mx-5 md:mx-[88px]">
         <Image src="/images/Contact/contact-hero.jpg" alt="" fill className="object-cover" />
         <div className="absolute inset-0 bg-[#071a24]/70" />
 

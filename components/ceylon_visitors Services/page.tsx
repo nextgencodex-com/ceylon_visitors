@@ -91,7 +91,7 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
   return (
     <>
       {/* ================= HERO ================= */}
-      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-[420px] flex items-center justify-center text-center text-white overflow-hidden rounded-[34px] mx-5 md:mx-[88px]">
         <Image
           src="/images/services.jpg"
           alt=""
