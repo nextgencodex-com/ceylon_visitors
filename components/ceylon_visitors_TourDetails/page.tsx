@@ -21,7 +21,7 @@ export default function CeylonVisitorsTourDetails() {
 
 function TourDetails({ desktop = false }: { desktop?: boolean }) {
   const whatsapp =
-    "https://wa.me/94713807185?text=Hello, I want to book the 7 Days Classic Sri Lanka Tour.";
+    "https://wa.me/94771303301?text=Hello, I want to book the 7 Days Classic Sri Lanka Tour.";
 
   return (
     <>

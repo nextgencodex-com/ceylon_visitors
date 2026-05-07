@@ -73,18 +73,18 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
       </header>
 
       {/* Desktop Header */}
-      <header className="hidden md:flex h-[58px] bg-white items-center justify-between px-[88px] shadow-sm">
+      <header className="hidden md:flex sticky top-0 z-50 h-[72px] bg-white items-center justify-between px-[88px] shadow-sm">
         <Link href="/">
           <Image
             src="/images/header/logo.jpeg"
             alt="Ceylon Visitors Logo"
             width={50}
-            height={40}
+            height={48}
             className="object-contain w-auto h-auto"
           />
         </Link>
 
-        <nav className="flex items-center gap-[37px] text-[12px] font-semibold text-[#071a24]">
+        <nav className="flex items-center gap-[37px] text-[13px] font-semibold text-[#071a24]">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -101,7 +101,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
         <button
           type="button"
           onClick={() => setIsQuoteOpen(true)}
-          className="h-[34px] w-[105px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
+          className="h-[40px] w-[112px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
         >
           Get A Quote
         </button>

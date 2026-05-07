@@ -65,7 +65,7 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
           <InfoCard
             icon={<MessageCircle size={19} />}
             title="WhatsApp (Fastest)"
-            lines={["+94 71 380 7185", "Available 24/7"]}
+            lines={["+94 77 130 3301", "Available 24/7"]}
             green
           />
 
@@ -115,7 +115,7 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
 
         {/* Floating WhatsApp */}
         <a
-          href="https://wa.me/94713807185"
+          href="https://wa.me/94771303301"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed right-8 bottom-8 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg"

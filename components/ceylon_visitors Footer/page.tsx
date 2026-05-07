@@ -59,7 +59,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
 
             <div className="flex items-center gap-3">
               <Phone size={16} className="text-[#d8b62f]" />
-              +94 71 380 7185
+              +94 77 130 3301
             </div>
 
             <div className="flex items-center gap-3">
@@ -101,6 +101,11 @@ function FooterColumn({ title, items }: any) {
             About: "/ceylon_visitors_About",
             Reviews: "/ceylon_visitors_Reviews",
             Contact: "/ceylon_visitors_Contact",
+            "Airport Transfers": "/ceylon_visitors_Services",
+            "Chauffeur Services": "/ceylon_visitors_Services",
+            "Day Tours": "/ceylon_visitors_Services",
+            "Multi-Day Packages": "/ceylon_visitors_Services",
+            "Custom Itineraries": "/ceylon_visitors_Services",
           };
 
           return (

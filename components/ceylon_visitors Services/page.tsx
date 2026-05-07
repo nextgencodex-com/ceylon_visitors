@@ -2,52 +2,26 @@
 
 import Image from "next/image";
 import { Plane, Car, Sun, Map, MessageCircle } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function CeylonVisitorsServices() {
-  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const handler = (e: MediaQueryListEvent | MediaQueryList) =>
-      setIsDesktop((e as any).matches ?? false);
-    // set initial
-    setIsDesktop(mq.matches);
-    // add listener (modern + fallback)
-    if (typeof mq.addEventListener === "function") {
-      mq.addEventListener("change", handler as any);
-      return () => mq.removeEventListener("change", handler as any);
-    } else {
-      // older browsers
-      // @ts-ignore
-      mq.addListener(handler as any);
-      return () => {
-        // @ts-ignore
-        mq.removeListener(handler as any);
-      };
-    }
-  }, []);
-
-  if (isDesktop === null) return null;
-
   return (
     <main className="bg-[#f4f4f4] text-[#071a24]">
-      {isDesktop ? (
-        <section>
-          <ServicesPage desktop />
-        </section>
-      ) : (
-        <section className="max-w-[390px] mx-auto mt-20 border border-gray-300">
-          <ServicesPage />
-        </section>
-      )}
+      {/* Desktop View - only desktop */}
+      <section className="hidden md:block">
+        <ServicesPage desktop />
+      </section>
+
+      {/* Mobile View - only mobile */}
+      <section className="block md:hidden">
+        <ServicesPage />
+      </section>
     </main>
   );
 }
 
 function ServicesPage({ desktop = false }: { desktop?: boolean }) {
   const whatsappLink =
-    "https://wa.me/94713807185?text=Hello, I want to book a ride.";
+    "https://wa.me/94771303301?text=Hello, I want to book a ride.";
 
   const services = [
     {
@@ -166,6 +140,16 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
           Book Your Ride Now
         </a>
       </div>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] hover:bg-[#18c75e] text-white flex items-center justify-center shadow-lg transition"
+      >
+        <MessageCircle size={23} />
+      </a>
     </>
   );
 }

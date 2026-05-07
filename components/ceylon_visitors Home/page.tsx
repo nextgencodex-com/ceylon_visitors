@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 
 import {
   Car,
@@ -64,7 +65,7 @@ function MobileHome() {
 /* ================= HERO ================= */
 
 function Hero({ desktop = false }: { desktop?: boolean }) {
-  const whatsappNumber = "94713807185";
+  const whatsappNumber = "94771303301";
   const whatsappMessage = "Hello, I would like to book a Sri Lanka tour.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
@@ -111,7 +112,7 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
           </a>
 
           <a
-            href="#tours"
+            href="/ceylon_visitors_Tours"
             className="h-[46px] w-[140px] border border-white text-white hover:bg-white hover:text-[#071a24] text-[12px] font-medium rounded-[2px] flex items-center justify-center transition"
           >
             Explore Tours
@@ -119,14 +120,14 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
         </div>
       </div>
 
-      <a
+      {/* <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
         className="absolute right-5 bottom-5 z-20 w-[42px] h-[42px] rounded-full bg-[#10d65c] hover:bg-[#0fc955] text-white flex items-center justify-center shadow-md transition"
       >
         <MessageCircle size={22} strokeWidth={2} />
-      </a>
+      </a> */}
     </section>
   );
 }
@@ -135,6 +136,8 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
 /* ================= WHY TRAVEL SECTION ================= */
 
 function WhyTravel({ desktop = false }: { desktop?: boolean }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
   const cards = [
     {
       icon: Car,
@@ -158,8 +161,16 @@ function WhyTravel({ desktop = false }: { desktop?: boolean }) {
     },
   ];
 
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <section className="bg-[#f5f5f5] px-[55px] py-[62px]">
+    <section className="bg-[#f5f5f5] px-5 md:px-[55px] py-[62px]">
       {/* Section Title */}
       <div className="text-center mb-[58px]">
         <h2 className="font-serif text-[26px] font-bold text-[#071a24]">
@@ -169,49 +180,128 @@ function WhyTravel({ desktop = false }: { desktop?: boolean }) {
         <div className="w-[78px] h-[2px] bg-[#d8a51d] mx-auto mt-[12px]" />
       </div>
 
-      {/* Cards */}
-      <div
-        className={`grid gap-[28px] ${
-          desktop ? "grid-cols-4" : "grid-cols-1"
-        }`}
-      >
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="bg-white h-[220px] rounded-[8px] flex flex-col items-center justify-center text-center px-8 shadow-sm"
-          >
-            {/* Icon Circle */}
-            <div className="w-[54px] h-[54px] rounded-full bg-[#071a24] text-[#d8a51d] flex items-center justify-center mb-[22px]">
-              <card.icon size={22} strokeWidth={1.8} />
+      {/* Desktop Grid */}
+      {desktop ? (
+        <div className="grid gap-[28px] grid-cols-4">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="bg-white h-[220px] rounded-[8px] flex flex-col items-center justify-center text-center px-8 shadow-sm"
+            >
+              <div className="w-[54px] h-[54px] rounded-full bg-[#071a24] text-[#d8a51d] flex items-center justify-center mb-[22px]">
+                <card.icon size={22} strokeWidth={1.8} />
+              </div>
+              <h3 className="font-serif text-[16px] font-bold leading-[19px] text-[#071a24] whitespace-pre-line mb-[16px]">
+                {card.title}
+              </h3>
+              <p className="text-[13px] leading-[18px] text-[#4b5563] whitespace-pre-line">
+                {card.text}
+              </p>
             </div>
-
-            {/* Card Title */}
-            <h3 className="font-serif text-[16px] font-bold leading-[19px] text-[#071a24] whitespace-pre-line mb-[16px]">
-              {card.title}
-            </h3>
-
-            {/* Card Text */}
-            <p className="text-[13px] leading-[18px] text-[#4b5563] whitespace-pre-line">
-              {card.text}
-            </p>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center">
+          {/* Mobile Carousel */}
+          <div className="w-full max-w-[350px] mb-6">
+            <div className="bg-white h-[220px] rounded-[8px] flex flex-col items-center justify-center text-center px-8 shadow-sm">
+              <div className="w-[54px] h-[54px] rounded-full bg-[#071a24] text-[#d8a51d] flex items-center justify-center mb-[22px]">
+                {(() => {
+                  const IconComponent = cards[currentSlide].icon;
+                  return <IconComponent size={22} strokeWidth={1.8} />;
+                })()}
+              </div>
+              <h3 className="font-serif text-[16px] font-bold leading-[19px] text-[#071a24] whitespace-pre-line mb-[16px]">
+                {cards[currentSlide].title}
+              </h3>
+              <p className="text-[13px] leading-[18px] text-[#4b5563] whitespace-pre-line">
+                {cards[currentSlide].text}
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-4 justify-center">
+            <button
+              onClick={handlePrev}
+              className="w-[40px] h-[40px] rounded-full bg-[#071a24] text-white flex items-center justify-center hover:bg-[#0a2a36] transition"
+            >
+              ←
+            </button>
+            <div className="flex gap-2">
+              {cards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-[8px] h-[8px] rounded-full transition ${
+                    index === currentSlide ? "bg-[#d8a51d]" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={handleNext}
+              className="w-[40px] h-[40px] rounded-full bg-[#071a24] text-white flex items-center justify-center hover:bg-[#0a2a36] transition"
+            >
+              →
+            </button>
+          </div>
+
+          {/* Slide Counter */}
+          <p className="text-[13px] text-gray-600 mt-4">
+            {currentSlide + 1} / {cards.length}
+          </p>
+        </div>
+      )}
     </section>
   );
 }
 /* ================= DESTINATIONS SECTION ================= */
-
+import Link from 'next/link';
 
 function Destinations({ desktop = false }: { desktop?: boolean }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const places = [
-    "/images/sigiriya.png",
-    "/images/tea.png",
-    "/images/temple.png",
-    "/images/beach.png",
-    "/images/mirissa.png",
-    "/images/yala.png",
+    {
+      img: "/images/sigiriya.png",
+      name: "Sigiriya",
+      slug: "sigiriya"
+    },
+    {
+      img: "/images/tea.png",
+      name: "Nuwara Eliya",
+      slug: "nuwara-eliya"
+    },
+    {
+      img: "/images/temple.png",
+      name: "Kandy",
+      slug: "kandy"
+    },
+    {
+      img: "/images/beach.png",
+      name: "Bentota",
+      slug: "bentota"
+    },
+    {
+      img: "/images/mirissa.png",
+      name: "Mirissa",
+      slug: "mirissa"
+    },
+    {
+      img: "/images/yala.png",
+      name: "Yala",
+      slug: "yala"
+    },
   ];
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev === 0 ? places.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev === places.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section id="tours" className="bg-white px-5 md:px-16 py-14">
@@ -223,32 +313,68 @@ function Destinations({ desktop = false }: { desktop?: boolean }) {
           </h2>
           <div className="w-[55px] h-[2px] bg-[#d8a51d] mt-3" />
         </div>
-
-        <p className="text-[12px] font-semibold text-[#071a24] cursor-pointer">
-          View All Packages →
-        </p>
       </div>
 
-      {/* Grid */}
-      <div className={`grid gap-6 ${desktop ? "grid-cols-3" : "grid-cols-1"}`}>
-        {places.map((img, index) => (
-          <div
-            key={index}
-            className="relative h-[210px] rounded-[10px] overflow-hidden group"
-          >
-            <Image
-              src={img}
-              alt=""
-              fill
-              className="object-cover group-hover:scale-105 transition duration-500"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-
-            {/* Optional dark overlay */}
-            <div className="absolute inset-0 bg-black/20" />
+      {/* Grid for Desktop */}
+      {desktop ? (
+        <div className="grid gap-6 grid-cols-3">
+          {places.map((place, index) => (
+            <Link href={`/destinations/${place.slug}`} key={index} className="relative h-[210px] rounded-[10px] overflow-hidden group block">
+              <Image
+                src={place.img}
+                alt={place.name}
+                fill
+                className="object-cover group-hover:scale-105 transition duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500" />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center">
+          {/* Mobile Carousel */}
+          <div className="w-full max-w-[350px] mb-6">
+            <Link href={`/destinations/${places[currentSlide].slug}`} className="relative h-[240px] rounded-[10px] overflow-hidden group block">
+              <Image
+                src={places[currentSlide].img}
+                alt={places[currentSlide].name}
+                fill
+                className="object-cover transition duration-500"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-black/20" />
+            </Link>
           </div>
-        ))}
-      </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-4 justify-center">
+            <button
+              onClick={handlePrev}
+              className="w-[40px] h-[40px] rounded-full bg-[#071a24] text-white flex items-center justify-center hover:bg-[#0a2a36] transition"
+            >
+              ←
+            </button>
+            <div className="flex gap-2">
+              {places.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-[8px] h-[8px] rounded-full transition ${
+                    index === currentSlide ? "bg-[#d8a51d]" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={handleNext}
+              className="w-[40px] h-[40px] rounded-full bg-[#071a24] text-white flex items-center justify-center hover:bg-[#0a2a36] transition"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -315,17 +441,12 @@ function Services({ desktop = false }: { desktop?: boolean }) {
 
         {/* View All Services Button */}
         <div className="text-center mt-[46px]">
-          <button
-            type="button"
-            onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
+          <Link
+            href="/ceylon_visitors_Services"
             className="inline-flex items-center justify-center bg-[#d8b62f] hover:bg-[#c9a929] text-[#061522] font-bold text-[14px] w-[220px] h-[54px] rounded-[3px] transition cursor-pointer"
           >
             View All Services
-          </button>
+          </Link>
         </div>
       </div>
     </section>
@@ -389,17 +510,12 @@ function Reviews({ desktop = false }: { desktop?: boolean }) {
 
       {/* View All Reviews Button */}
       <div className="text-center mt-[42px]">
-        <button
-          type="button"
-          onClick={() => {
-            document.getElementById("reviews")?.scrollIntoView({
-              behavior: "smooth",
-            });
-          }}
-          className="bg-[#d8b62f] hover:bg-[#c9a929] text-[#071a24] font-bold text-[13px] w-[170px] h-[43px] rounded-[3px] transition cursor-pointer"
+        <Link
+          href="/ceylon_visitors_Reviews"
+          className="inline-flex items-center justify-center bg-[#d8b62f] hover:bg-[#c9a929] text-[#071a24] font-bold text-[13px] w-[170px] h-[43px] rounded-[3px] transition cursor-pointer"
         >
           View All Reviews
-        </button>
+        </Link>
       </div>
     </section>
   );
@@ -407,7 +523,7 @@ function Reviews({ desktop = false }: { desktop?: boolean }) {
 /* ================= CTA SECTION ================= */
 
 function CTA({ desktop = false }: { desktop?: boolean }) {
-  const whatsappNumber = "94713807185";
+  const whatsappNumber = "94771303301";
   const whatsappMessage = "Hello, I would like to plan my Sri Lanka tour.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
@@ -449,6 +565,16 @@ function CTA({ desktop = false }: { desktop?: boolean }) {
           Book via WhatsApp Now
         </a>
       </div>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] hover:bg-[#18c75e] text-white flex items-center justify-center shadow-lg transition"
+      >
+        <MessageCircle size={23} />
+      </a>
     </section>
   );
 }

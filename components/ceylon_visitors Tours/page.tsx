@@ -21,7 +21,7 @@ export default function CeylonVisitorsTours() {
 }
 
 function ToursPage({ desktop = false }: { desktop?: boolean }) {
-  const whatsapp = "https://wa.me/94713807185";
+  const whatsapp = "https://wa.me/94771303301";
 
   const tours = [
     {

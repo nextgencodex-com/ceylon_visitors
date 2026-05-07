@@ -127,7 +127,7 @@ function ReviewsPage({ desktop = false }: { desktop?: boolean }) {
 
         {/* Floating WhatsApp */}
         <a
-          href="https://wa.me/94713807185"
+          href="https://wa.me/94771303301"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed right-8 bottom-8 z-50 w-[45px] h-[45px] rounded-full bg-[#20d969] hover:bg-[#18c75e] text-white flex items-center justify-center shadow-lg transition"
