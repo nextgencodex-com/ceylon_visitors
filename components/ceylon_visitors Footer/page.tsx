@@ -71,15 +71,18 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
       </div>
 
       {/* Bottom */}
-      <div className="mt-[50px] pt-[20px] border-t border-gray-300 flex flex-col md:flex-row justify-between text-[12px] items-center">
-        <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
-          <p>© 2026 Ceylon Visitors. All rights reserved.</p>
-          <p className="font-semibold text-gray-500">By NextGen CodeX (PVT) LTD</p>
-        </div>
+      <div className="mt-[50px] pt-[20px] border-t border-gray-300 text-[12px]">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:items-center">
+          <p className="text-center md:text-left">© 2026 Ceylon Visitors. All rights reserved.</p>
 
-        <div className="flex gap-6 mt-4 md:mt-0 font-medium">
-          <Link href="/privacy-policy" className="hover:text-[#071a24] transition">Privacy Policy</Link>
-          <Link href="/terms-of-service" className="hover:text-[#071a24] transition">Terms of Service</Link>
+          <p className="text-center font-semibold text-gray-500">
+            By NextGen CodeX (PVT) LTD
+          </p>
+
+          <div className="flex justify-center md:justify-end gap-6 font-medium">
+            <Link href="/privacy-policy" className="hover:text-[#071a24] transition">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-[#071a24] transition">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
