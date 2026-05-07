@@ -30,7 +30,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
             alt="Ceylon Visitors Logo"
             width={45}
             height={38}
-            className="object-contain"
+            className="object-contain w-auto h-auto"
           />
         </Link>
 
@@ -80,7 +80,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
             alt="Ceylon Visitors Logo"
             width={50}
             height={40}
-            className="object-contain"
+            className="object-contain w-auto h-auto"
           />
         </Link>
 

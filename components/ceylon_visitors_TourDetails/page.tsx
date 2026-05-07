@@ -32,6 +32,7 @@ function TourDetails({ desktop = false }: { desktop?: boolean }) {
           alt="Ella Sri Lanka"
           fill
           className="object-cover"
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-[#071a24]/70" />
@@ -69,7 +70,7 @@ function TourDetails({ desktop = false }: { desktop?: boolean }) {
               key={index}
               className="relative h-[130px] rounded-[2px] overflow-hidden"
             >
-              <Image src={img} alt="" fill className="object-cover" />
+              <Image src={img} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
           ))}
         </div>
@@ -134,6 +135,7 @@ function TourDetails({ desktop = false }: { desktop?: boolean }) {
                 alt="Destination map"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 60vw"
               />
             </div>
           </div>

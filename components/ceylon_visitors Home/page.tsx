@@ -78,6 +78,7 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
         fill
         priority
         className="object-cover"
+        sizes="(max-width: 768px) calc(100vw - 2.5rem), calc(100vw - 11rem)"
       />
 
       <div className="absolute inset-0 bg-[#071a24]/65" />
@@ -240,6 +241,7 @@ function Destinations({ desktop = false }: { desktop?: boolean }) {
               alt=""
               fill
               className="object-cover group-hover:scale-105 transition duration-500"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
 
             {/* Optional dark overlay */}
@@ -271,6 +273,7 @@ function Services({ desktop = false }: { desktop?: boolean }) {
         alt="Sri Lanka beach"
         fill
         className="object-cover"
+        sizes="100vw"
       />
 
       <div className="absolute inset-0 bg-[#062330]/78" />
@@ -419,7 +422,10 @@ function CTA({ desktop = false }: { desktop?: boolean }) {
         src="/images/CTA.jpg"
         alt="Contact background"
         fill
+        priority
+        loading="eager"
         className="object-cover"
+        sizes="100vw"
       />
 
       <div className="absolute inset-0 bg-[#071a24]/82" />

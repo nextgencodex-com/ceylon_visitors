@@ -97,6 +97,7 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
           alt=""
           fill
           className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#071a24]/70" />
 

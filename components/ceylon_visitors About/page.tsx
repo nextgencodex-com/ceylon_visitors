@@ -27,6 +27,7 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
           alt="Sri Lankan temple art"
           fill
           className="object-cover"
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-[#071a24]/65" />
@@ -106,21 +107,21 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <div className="relative h-[170px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/yala.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/About/yala.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
               </div>
 
               <div className="relative h-[145px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/beach.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/About/beach.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
               </div>
             </div>
 
             <div className="space-y-4 mt-8">
               <div className="relative h-[145px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/driver.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/About/driver.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
               </div>
 
               <div className="relative h-[170px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/temple-red.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/About/temple-red.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
               </div>
             </div>
           </div>

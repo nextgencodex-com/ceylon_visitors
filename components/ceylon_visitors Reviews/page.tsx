@@ -60,6 +60,7 @@ function ReviewsPage({ desktop = false }: { desktop?: boolean }) {
           alt="Reviews hero"
           fill
           className="object-cover"
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-[#071a24]/65" />
