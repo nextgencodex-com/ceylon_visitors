@@ -140,16 +140,6 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
           Book Your Ride Now
         </a>
       </div>
-
-      {/* WhatsApp Floating Button */}
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] hover:bg-[#18c75e] text-white flex items-center justify-center shadow-lg transition"
-      >
-        <MessageCircle size={23} />
-      </a>
     </>
   );
 }

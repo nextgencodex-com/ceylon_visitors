@@ -84,7 +84,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
           />
         </Link>
 
-        <nav className="flex items-center gap-[37px] text-[13px] font-semibold text-[#071a24]">
+        <nav className="flex items-center gap-[37px] text-[16px] font-bold text-[#071a24]">
           {navLinks.map((link) => (
             <Link
               key={link.name}

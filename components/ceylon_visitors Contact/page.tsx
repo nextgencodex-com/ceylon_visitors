@@ -112,17 +112,8 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
             </button>
           </form>
         </div>
-
-        {/* Floating WhatsApp */}
-        <a
-          href="https://wa.me/94771303301"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed right-8 bottom-8 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg"
-        >
-          <MessageCircle size={23} />
-        </a>
       </section>
+
     </>
   );
 }

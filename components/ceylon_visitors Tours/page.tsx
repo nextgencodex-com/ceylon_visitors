@@ -165,16 +165,6 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
           </div>
         ))}
       </section>
-
-      {/* Floating WhatsApp */}
-      <a
-        href={whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg"
-      >
-        <MessageCircle size={23} />
-      </a>
     </>
   );
 }

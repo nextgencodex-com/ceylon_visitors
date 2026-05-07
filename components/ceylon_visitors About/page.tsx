@@ -126,16 +126,6 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
             </div>
           </div>
         </div>
-
-        {/* WhatsApp Floating Button */}
-        <a
-          href="https://wa.me/94771303301"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg transition hover:bg-[#18c75e]"
-        >
-          <MessageCircle size={23} />
-        </a>
       </section>
     </>
   );
