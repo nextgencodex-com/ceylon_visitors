@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer({ desktop = false }: { desktop?: boolean }) {
   return (
-    <footer className="bg-[#f4f4f4] px-5 md:px-[90px] py-[60px] text-[#6b7280]">
+    <footer className="bg-[#f4f4f4] border-t border-gray-300 px-5 md:px-[90px] py-[60px] text-[#6b7280]">
       <div className="grid gap-10 grid-cols-1 md:grid-cols-4">
         {/* About */}
         <div>
@@ -30,7 +30,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
         {/* Quick Links */}
         <FooterColumn
           title="Quick Links"
-          items={["Home", "Tours", "Services", "About", "Reviews", "Contact"]}
+          items={["Home", "Tours", "Services", "About", "Gallery", "Contact"]}
         />
 
         {/* Services */}
@@ -105,7 +105,7 @@ function FooterColumn({ title, items }: any) {
             Tours: "/ceylon_visitors_Tours",
             Services: "/ceylon_visitors_Services",
             About: "/ceylon_visitors_About",
-            Reviews: "/ceylon_visitors_Reviews",
+            Gallery: "/ceylon_visitors_Gallery",
             Contact: "/ceylon_visitors_Contact",
             "Airport Transfers": "/ceylon_visitors_Services",
             "Chauffeur Services": "/ceylon_visitors_Services",

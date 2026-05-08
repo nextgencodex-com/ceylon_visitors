@@ -25,45 +25,114 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
 
   const tours = [
     {
-      title: "7 Days Classic Sri Lanka Tour",
-      price: "$450",
-      badge: "Most Popular",
+      title: "Heritage Tour",
       img: "/images/tours/1.jpg",
-      route: "Colombo → Kandy → Ella → Yala → Galle",
-      duration: "7 Days / 6 Nights",
-      highlights: [
-        "Sigiriya Rock",
-        "Train Ride in Ella",
-        "Safari in Yala",
-        "Beach stay in South",
-      ],
+      duration: "11 Days",
+      highlights: ["Perfect blend of heritage and culture", "Ancient temples", "Historical monuments", "Cultural immersion"],
     },
     {
-      title: "5 Days Hill Country Escape",
-      price: "$320",
+      title: "Hill country Tour",
+      badge: "Most Popular",
       img: "/images/tours/2.jpg",
-      route: "Kandy → Nuwara Eliya → Ella",
-      duration: "5 Days / 4 Nights",
-      highlights: [
-        "Temple of the Tooth",
-        "Tea Plantations",
-        "Waterfalls",
-        "Scenic Train Ride",
-      ],
+      duration: "Custom",
+      highlights: ["Stunning beaches", "Ancient temples", "Vibrant markets", "Tea plantations"],
     },
     {
-      title: "3 Days South Coast Tour",
-      price: "$200",
-      badge: "Limited Availability",
+      title: "Ramayana Tour",
       img: "/images/tours/3.jpg",
-      route: "Galle → Mirissa → Bentota",
-      duration: "3 Days / 2 Nights",
-      highlights: [
-        "Galle Fort",
-        "Whale Watching",
-        "Turtle Hatchery",
-        "Pristine Beaches",
-      ],
+      duration: "10 Days",
+      highlights: ["Historic Ramayana sites", "Spiritual journey", "Cultural heritage", "Scenic landscapes"],
+    },
+    {
+      title: "Tropical Paradise Tour",
+      img: "/images/tours/1.jpg",
+      duration: "14 Days",
+      highlights: ["Unforgettable 14-day experience", "Tropical beaches", "Lush rainforests", "Wildlife encounters"],
+    },
+    {
+      title: "Lanka Serenity Tour",
+      img: "/images/tours/2.jpg",
+      duration: "13 Days",
+      highlights: ["Beaches and safaris", "Relaxing getaways", "Nature retreats", "Cultural sites"],
+    },
+    {
+      title: "Sri Lanka Safari Tour",
+      img: "/images/tours/3.jpg",
+      duration: "8 Days",
+      highlights: ["Galle's heritage", "Wildlife safaris", "National parks", "Coastal beauty"],
+    },
+    {
+      title: "Wildlife of Sri Lanka Tour",
+      img: "/images/tours/1.jpg",
+      duration: "8 Days",
+      highlights: ["Unforgettable wildlife encounters", "National parks", "Nature exploration", "Photography"],
+    },
+    {
+      title: "Classic Sri Lanka Tour",
+      badge: "Must Try",
+      img: "/images/tours/2.jpg",
+      duration: "12 Days",
+      highlights: ["Culture and nature", "Iconic landmarks", "Comprehensive journey", "Authentic experiences"],
+    },
+    {
+      title: "Cultural Heritage Trails Tour",
+      img: "/images/tours/3.jpg",
+      duration: "7 Days",
+      highlights: ["Ultimate 7-day tour", "Blending adventure", "Cultural heritage", "Local experiences"],
+    },
+    {
+      title: "Round Tour",
+      img: "/images/tours/1.jpg",
+      duration: "11 Days",
+      highlights: ["Perfect blend of sights", "Island exploration", "Varied landscapes", "Memorable journey"],
+    },
+    {
+      title: "Beach Tour",
+      img: "/images/tours/2.jpg",
+      duration: "5 Days",
+      highlights: ["Perfect coastal getaway", "Sun and sand", "Water sports", "Relaxing resorts"],
+    },
+    {
+      title: "sun & sand Tour",
+      img: "/images/tours/3.jpg",
+      duration: "9 Days",
+      highlights: ["Beaches and safaris", "Culture and landscapes", "Ocean views", "Tranquil experience"],
+    },
+    {
+      title: "Lush Landscapes Tour",
+      img: "/images/tours/1.jpg",
+      duration: "7 Days",
+      highlights: ["Sri Lanka's highlights", "Lush landscapes", "Tea country", "Scenic beauty"],
+    },
+    {
+      title: "Eco Tour",
+      img: "/images/tours/2.jpg",
+      duration: "7 Days",
+      highlights: ["Best of Sri Lanka's nature", "Eco-friendly travel", "Sustainable tourism", "Wildlife tracking"],
+    },
+    {
+      title: "Honeymoon Tour",
+      img: "/images/tours/3.jpg",
+      duration: "9 Days",
+      highlights: ["Romantic getaway", "Luxury accommodations", "Private moments", "Unforgettable journey"],
+    },
+    {
+      title: "Horizon Tour",
+      img: "/images/tours/1.jpg",
+      duration: "7 Days",
+      highlights: ["Sri Lanka's highlights", "Broad perspectives", "Adventure trails", "Scenic views"],
+    },
+    {
+      title: "Cultural Tour",
+      img: "/images/tours/2.jpg",
+      duration: "14 Days",
+      highlights: ["Explore Ancient Cities", "Breathtaking landscapes", "Deep cultural dive", "Historic sites"],
+    },
+    {
+      title: "Nature Tour",
+      img: "/images/tours/3.jpg",
+      duration: "Custom",
+      highlights: ["Explore Sri Lanka's beauty", "Ancient sites", "Lush landscapes", "Back to nature"],
     },
   ];
 
@@ -102,7 +171,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
           desktop ? "grid-cols-3" : "grid-cols-1"
         }`}
       >
-        {[...tours, ...tours].map((tour, i) => (
+        {tours.map((tour, i) => (
           <div
             key={i}
             className="bg-white rounded-[10px] overflow-hidden shadow-sm"
@@ -134,16 +203,9 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
                 {tour.title}
               </h3>
 
-              <p className="text-[#20d969] text-[13px] font-bold mb-3">
-                From {tour.price}
-              </p>
-
-              <div className="text-[12px] text-gray-500 mb-3 space-y-1">
-                <p className="flex items-center gap-2">
-                  <MapPin size={13} /> {tour.route}
-                </p>
-                <p className="flex items-center gap-2">
-                  <Clock size={13} /> {tour.duration}
+              <div className="text-[12px] text-gray-500 mb-3 mt-3 space-y-1">
+                <p className="flex items-center gap-2 font-medium text-black">
+                  <Clock size={15} className="text-[#d8b62f]" /> {tour.duration}
                 </p>
               </div>
 

@@ -88,23 +88,38 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
             Send us a Message
           </h2>
 
-          <form className="space-y-5">
-            <Input label="Full Name" placeholder="John Doe" />
-            <Input label="Email Address" placeholder="john@example.com" />
-            <Input label="Estimated Travel Dates" placeholder="e.g., Oct 15 - Oct 25" />
+          <form 
+            className="space-y-5"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const name = formData.get("name");
+              const email = formData.get("email");
+              const dates = formData.get("dates");
+              const message = formData.get("message");
+              
+              const text = `Hi Ceylon Visitors!\n\nName: ${name}\nEmail: ${email}\nTravel Dates: ${dates}\n\nMessage: ${message}`;
+              const whatsappUrl = `https://wa.me/94771303301?text=${encodeURIComponent(text)}`;
+              window.open(whatsappUrl, "_blank");
+            }}
+          >
+            <Input name="name" label="Full Name" placeholder="John Doe" />
+            <Input name="email" label="Email Address" placeholder="john@example.com" />
+            <Input name="dates" label="Estimated Travel Dates" placeholder="e.g., Oct 15 - Oct 25" />
 
             <div>
               <label className="block text-[12px] font-bold mb-2">
                 Your Message
               </label>
               <textarea
+                name="message"
                 placeholder="Tell us about your travel plans..."
                 className="w-full h-[110px] bg-[#f3f4f6] rounded-[5px] px-4 py-3 text-[13px] outline-none resize-none"
               />
             </div>
 
             <button
-              type="button"
+              type="submit"
               className="w-full h-[50px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[13px] font-bold rounded-[5px] flex items-center justify-center gap-2 transition"
             >
               <Send size={15} />
@@ -156,11 +171,12 @@ function InfoCard({
   );
 }
 
-function Input({ label, placeholder }: { label: string; placeholder: string }) {
+function Input({ label, placeholder, name }: { label: string; placeholder: string; name?: string }) {
   return (
     <div>
       <label className="block text-[12px] font-bold mb-2">{label}</label>
       <input
+        name={name}
         placeholder={placeholder}
         className="w-full h-[45px] bg-[#f3f4f6] rounded-[5px] px-4 text-[13px] outline-none"
       />

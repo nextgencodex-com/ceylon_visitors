@@ -16,7 +16,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
     { name: "Tours", href: "/ceylon_visitors_Tours" },
     { name: "Services", href: "/ceylon_visitors_Services" },
     { name: "About", href: "/ceylon_visitors_About" },
-    { name: "Reviews", href: "/ceylon_visitors_Reviews" },
+    { name: "Gallery", href: "/ceylon_visitors_Gallery" },
     { name: "Contact", href: "/ceylon_visitors_Contact" },
   ];
 
@@ -123,18 +123,33 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
               Get a Quote
             </h2>
 
-            <form className="space-y-5">
-              <QuoteInput label="Full Name" placeholder="John Doe" />
-              <QuoteInput label="Email Address" placeholder="john@example.com" />
-              <QuoteInput label="Destination" placeholder="Select Destination" />
-              <QuoteInput label="Phone Number" placeholder="+94" />
+            <form 
+              className="space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get("name");
+                const email = formData.get("email");
+                const dest = formData.get("dest");
+                const phone = formData.get("phone");
+                
+                const text = `Hi Ceylon Visitors!\n\nQuote Request:\nName: ${name}\nEmail: ${email}\nDestination: ${dest}\nPhone: ${phone}\n\nPlease provide a quote.`;
+                const whatsappUrl = `https://wa.me/94771303301?text=${encodeURIComponent(text)}`;
+                window.open(whatsappUrl, "_blank");
+                setIsQuoteOpen(false);
+              }}
+            >
+              <QuoteInput name="name" label="Full Name" placeholder="John Doe" />
+              <QuoteInput name="email" label="Email Address" placeholder="john@example.com" />
+              <QuoteInput name="dest" label="Destination" placeholder="Select Destination" />
+              <QuoteInput name="phone" label="Phone Number" placeholder="+94" />
 
               <button
-                type="button"
+                type="submit"
                 className="w-full h-[46px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[14px] font-bold rounded-[6px] flex items-center justify-center gap-3 transition"
               >
                 <Send size={17} />
-                Send Message
+                Send.
               </button>
             </form>
           </div>
@@ -147,9 +162,11 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
 function QuoteInput({
   label,
   placeholder,
+  name,
 }: {
   label: string;
   placeholder: string;
+  name?: string;
 }) {
   return (
     <div>
@@ -158,6 +175,7 @@ function QuoteInput({
       </label>
 
       <input
+        name={name}
         placeholder={placeholder}
         className="w-full h-[44px] bg-[#f3f4f6] border border-gray-200 rounded-[6px] px-4 text-[13px] outline-none"
       />
