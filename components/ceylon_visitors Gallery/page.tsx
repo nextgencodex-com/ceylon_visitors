@@ -24,15 +24,16 @@ function GalleryPage({ desktop = false }: { desktop?: boolean }) {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
 
   const galleryImages = [
-    { src: "/images/sigiriya.png", alt: "Sigiriya Rock", height: "h-[300px]" },
-    { src: "/images/beach.png", alt: "Sri Lankan Beaches", height: "h-[450px]" },
-    { src: "/images/tea.png", alt: "Tea Plantations", height: "h-[350px]" },
-    { src: "/images/tours/1.jpg", alt: "Cultural Tour", height: "h-[400px]" },
-    { src: "/images/yala.png", alt: "Yala Wildlife", height: "h-[300px]" },
-    { src: "/images/mirissa.png", alt: "Mirissa Coast", height: "h-[450px]" },
-    { src: "/images/tours/2.jpg", alt: "Scenic Train Ride", height: "h-[350px]" },
-    { src: "/images/temple.png", alt: "Ancient Temples", height: "h-[300px]" },
-    { src: "/images/tours/3.jpg", alt: "Nature and Wildlife", height: "h-[400px]" }
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.59 PM1.jpeg", alt: "Sri Lanka scenery", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.46 PM.jpeg", alt: "Sri Lanka coastal view", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.48 PM.jpeg", alt: "Travel moments in Sri Lanka", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.50 PM.jpeg", alt: "Sri Lanka journey", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.53 PM.jpeg", alt: "Portrait gallery image 1", orientation: "portrait" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.54 PM.jpeg", alt: "Sri Lanka landscape memory", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.56 PM.jpeg", alt: "Portrait gallery image 2", orientation: "portrait" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.19.59 PM.jpeg", alt: "Island adventure", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.20.00 PM.jpeg", alt: "Sri Lanka road trip", orientation: "landscape" },
+    { src: "/images/Gallery/WhatsApp Image 2026-05-11 at 3.20.00 PM1.jpeg", alt: "Portrait gallery image 3", orientation: "portrait" }
   ];
 
   return (
@@ -80,20 +81,20 @@ function GalleryPage({ desktop = false }: { desktop?: boolean }) {
         </div>
 
         {/* Image Grid - Masonry Layout */}
-        <div className={`columns-1 ${desktop ? "md:columns-3" : "sm:columns-2"} gap-5 space-y-5`}>
+        <div className={`${desktop ? "columns-1 md:columns-2 xl:columns-3" : "columns-1"} gap-5`}>
           {galleryImages.map((img, index) => (
             <div
               key={index}
-              className="relative rounded-[15px] overflow-hidden group shadow-md break-inside-avoid cursor-pointer"
+              className={`relative rounded-[18px] overflow-hidden group shadow-md cursor-pointer break-inside-avoid mb-5 ${desktop ? "w-full" : "w-full h-[280px]"}`}
               onClick={() => setSelectedImage(img)}
             >
-              <div className={`relative ${img.height} w-full`}>
+              <div className={`relative w-full ${desktop ? (img.orientation === "portrait" ? "h-[420px] md:h-[560px]" : "h-[220px] md:h-[300px]") : "h-full"}`}>
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
                   className="object-cover transition-all duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 />
                 
                 {/* Overlay */}
