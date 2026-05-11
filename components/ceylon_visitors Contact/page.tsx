@@ -78,24 +78,7 @@ function ContactPage({ desktop = false }: { desktop?: boolean }) {
             lines={["ceylonvisitortours@gmail.com"]}
           />
 
-          <InfoCard
-            icon={<MapPin size={22} />}
-            title="Location"
-            lines={["101/B, Kahatapitiya", "Hanwella, Colombo"]}
-          />
-
-          {/* Map moved under location */}
-          <div className="mt-10 rounded-[16px] overflow-hidden shadow-lg border border-gray-200 h-[320px] w-full max-w-[480px]">
-            <iframe
-              src="https://maps.google.com/maps?q=Kahatapitiya,Hanwella,Colombo&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          <LocationMapCard />
         </div>
 
         {/* Form */}
@@ -182,6 +165,36 @@ function InfoCard({
             {line}
           </p>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function LocationMapCard() {
+  return (
+    <div className="bg-white rounded-[12px] p-[24px] mb-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 max-w-[480px]">
+      <div className="flex gap-5 mb-5">
+        <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center flex-shrink-0 bg-[#f8f9fa] text-[#1597ff]">
+          <MapPin size={22} />
+        </div>
+
+        <div>
+          <h3 className="font-bold text-[16px] text-[#071a24] mb-2">Location</h3>
+          <p className="text-[14px] leading-[22px] text-[#4b5563]">101/B, Kahatapitiya</p>
+          <p className="text-[14px] leading-[22px] text-[#4b5563]">Hanwella, Colombo</p>
+        </div>
+      </div>
+
+      <div className="rounded-[10px] overflow-hidden border border-gray-200 h-[280px] w-full">
+        <iframe
+          src="https://maps.google.com/maps?q=Kahatapitiya,Hanwella,Colombo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen={false}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   );

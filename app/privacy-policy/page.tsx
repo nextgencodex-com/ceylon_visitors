@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="font-serif text-xl font-bold text-[#071a24] pt-4">4. Contact Us</h2>
           <p>
-            If you have any questions or concerns about this Privacy Policy, please contact us directly at <a href="mailto:hello@ceylonvisitors.com" className="font-medium text-[#d8a51d] hover:underline">hello@ceylonvisitors.com</a>.
+            If you have any questions or concerns about this Privacy Policy, please contact us directly at <a href="mailto:ceylonvisitortours@gmail.com" className="font-medium text-[#d8a51d] hover:underline">ceylonvisitortours@gmail.com</a>.
           </p>
         </div>
       </div>
