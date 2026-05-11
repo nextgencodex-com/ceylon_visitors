@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Clock, MessageCircle } from "lucide-react";
+import { toursData } from "@/data/tours";
 
 export default function CeylonVisitorsTours() {
   return (
@@ -21,120 +22,25 @@ export default function CeylonVisitorsTours() {
 }
 
 function ToursPage({ desktop = false }: { desktop?: boolean }) {
-  const whatsapp = "https://wa.me/94771303301";
+  const tours = toursData.map((tour) => {
+    // Generate highlights dynamically from the itinerary or description
+    const highlights = tour.itinerary?.length > 0 
+      ? tour.itinerary.slice(0, 4).map((i) => i.location.split(' to ').pop() || i.location)
+      : ["Perfect blend of heritage and culture", "Scenic landscapes", "Cultural immersion", "Memorable journey"];
 
-  const tours = [
-    {
-      title: "Heritage Tour",
-      img: "/images/tours/1.jpg",
-      duration: "11 Days",
-      highlights: ["Perfect blend of heritage and culture", "Ancient temples", "Historical monuments", "Cultural immersion"],
-    },
-    {
-      title: "Hill country Tour",
-      badge: "Most Popular",
-      img: "/images/tours/2.jpg",
-      duration: "Custom",
-      highlights: ["Stunning beaches", "Ancient temples", "Vibrant markets", "Tea plantations"],
-    },
-    {
-      title: "Ramayana Tour",
-      img: "/images/tours/3.jpg",
-      duration: "10 Days",
-      highlights: ["Historic Ramayana sites", "Spiritual journey", "Cultural heritage", "Scenic landscapes"],
-    },
-    {
-      title: "Tropical Paradise Tour",
-      img: "/images/tours/1.jpg",
-      duration: "14 Days",
-      highlights: ["Unforgettable 14-day experience", "Tropical beaches", "Lush rainforests", "Wildlife encounters"],
-    },
-    {
-      title: "Lanka Serenity Tour",
-      img: "/images/tours/2.jpg",
-      duration: "13 Days",
-      highlights: ["Beaches and safaris", "Relaxing getaways", "Nature retreats", "Cultural sites"],
-    },
-    {
-      title: "Sri Lanka Safari Tour",
-      img: "/images/tours/3.jpg",
-      duration: "8 Days",
-      highlights: ["Galle's heritage", "Wildlife safaris", "National parks", "Coastal beauty"],
-    },
-    {
-      title: "Wildlife of Sri Lanka Tour",
-      img: "/images/tours/1.jpg",
-      duration: "8 Days",
-      highlights: ["Unforgettable wildlife encounters", "National parks", "Nature exploration", "Photography"],
-    },
-    {
-      title: "Classic Sri Lanka Tour",
-      badge: "Must Try",
-      img: "/images/tours/2.jpg",
-      duration: "12 Days",
-      highlights: ["Culture and nature", "Iconic landmarks", "Comprehensive journey", "Authentic experiences"],
-    },
-    {
-      title: "Cultural Heritage Trails Tour",
-      img: "/images/tours/3.jpg",
-      duration: "7 Days",
-      highlights: ["Ultimate 7-day tour", "Blending adventure", "Cultural heritage", "Local experiences"],
-    },
-    {
-      title: "Round Tour",
-      img: "/images/tours/1.jpg",
-      duration: "11 Days",
-      highlights: ["Perfect blend of sights", "Island exploration", "Varied landscapes", "Memorable journey"],
-    },
-    {
-      title: "Beach Tour",
-      img: "/images/tours/2.jpg",
-      duration: "5 Days",
-      highlights: ["Perfect coastal getaway", "Sun and sand", "Water sports", "Relaxing resorts"],
-    },
-    {
-      title: "sun & sand Tour",
-      img: "/images/tours/3.jpg",
-      duration: "9 Days",
-      highlights: ["Beaches and safaris", "Culture and landscapes", "Ocean views", "Tranquil experience"],
-    },
-    {
-      title: "Lush Landscapes Tour",
-      img: "/images/tours/1.jpg",
-      duration: "7 Days",
-      highlights: ["Sri Lanka's highlights", "Lush landscapes", "Tea country", "Scenic beauty"],
-    },
-    {
-      title: "Eco Tour",
-      img: "/images/tours/2.jpg",
-      duration: "7 Days",
-      highlights: ["Best of Sri Lanka's nature", "Eco-friendly travel", "Sustainable tourism", "Wildlife tracking"],
-    },
-    {
-      title: "Honeymoon Tour",
-      img: "/images/tours/3.jpg",
-      duration: "9 Days",
-      highlights: ["Romantic getaway", "Luxury accommodations", "Private moments", "Unforgettable journey"],
-    },
-    {
-      title: "Horizon Tour",
-      img: "/images/tours/1.jpg",
-      duration: "7 Days",
-      highlights: ["Sri Lanka's highlights", "Broad perspectives", "Adventure trails", "Scenic views"],
-    },
-    {
-      title: "Cultural Tour",
-      img: "/images/tours/2.jpg",
-      duration: "14 Days",
-      highlights: ["Explore Ancient Cities", "Breathtaking landscapes", "Deep cultural dive", "Historic sites"],
-    },
-    {
-      title: "Nature Tour",
-      img: "/images/tours/3.jpg",
-      duration: "Custom",
-      highlights: ["Explore Sri Lanka's beauty", "Ancient sites", "Lush landscapes", "Back to nature"],
-    },
-  ];
+    let badge = "";
+    if (tour.title === "Hill country Tour") badge = "Most Popular";
+    if (tour.title === "Classic Sri Lanka Tour") badge = "Must Try";
+
+    return {
+      id: tour.id,
+      title: tour.title,
+      badge,
+      img: tour.images?.[0] || "/images/tours/1.jpg",
+      duration: tour.duration,
+      highlights,
+    };
+  });
 
   return (
     <>
@@ -218,7 +124,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
               </ul>
 
               <Link
-                href="/ceylon_visitors_TourDetails"
+                href={`/ceylon_visitors_TourDetails/${tour.id}`}
                 className="w-full h-[38px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
               >
                 Read More
