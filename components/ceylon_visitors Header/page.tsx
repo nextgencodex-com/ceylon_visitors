@@ -16,7 +16,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
     { name: "Tours", href: "/ceylon_visitors_Tours" },
     { name: "Services", href: "/ceylon_visitors_Services" },
     { name: "About", href: "/ceylon_visitors_About" },
-    { name: "Reviews", href: "/ceylon_visitors_Reviews" },
+    { name: "Gallery", href: "/ceylon_visitors_Gallery" },
     { name: "Contact", href: "/ceylon_visitors_Contact" },
   ];
 
@@ -30,7 +30,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
             alt="Ceylon Visitors Logo"
             width={45}
             height={38}
-            className="object-contain"
+            className="object-contain w-auto h-auto"
           />
         </Link>
 
@@ -73,18 +73,18 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
       </header>
 
       {/* Desktop Header */}
-      <header className="hidden md:flex h-[58px] bg-white items-center justify-between px-[88px] shadow-sm">
+      <header className="hidden md:flex sticky top-0 z-50 h-[72px] bg-white items-center justify-between px-[88px] shadow-sm">
         <Link href="/">
           <Image
             src="/images/header/logo.jpeg"
             alt="Ceylon Visitors Logo"
             width={50}
-            height={40}
-            className="object-contain"
+            height={48}
+            className="object-contain w-auto h-auto"
           />
         </Link>
 
-        <nav className="flex items-center gap-[37px] text-[12px] font-semibold text-[#071a24]">
+        <nav className="flex items-center gap-[37px] text-[16px] font-bold text-[#071a24]">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -101,7 +101,7 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
         <button
           type="button"
           onClick={() => setIsQuoteOpen(true)}
-          className="h-[34px] w-[105px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
+          className="h-[40px] w-[112px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
         >
           Get A Quote
         </button>
@@ -123,18 +123,33 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
               Get a Quote
             </h2>
 
-            <form className="space-y-5">
-              <QuoteInput label="Full Name" placeholder="John Doe" />
-              <QuoteInput label="Email Address" placeholder="john@example.com" />
-              <QuoteInput label="Destination" placeholder="Select Destination" />
-              <QuoteInput label="Phone Number" placeholder="+94" />
+            <form 
+              className="space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get("name");
+                const email = formData.get("email");
+                const dest = formData.get("dest");
+                const phone = formData.get("phone");
+                
+                const text = `Hi Ceylon Visitors!\n\nQuote Request:\nName: ${name}\nEmail: ${email}\nDestination: ${dest}\nPhone: ${phone}\n\nPlease provide a quote.`;
+                const whatsappUrl = `https://wa.me/94771303301?text=${encodeURIComponent(text)}`;
+                window.open(whatsappUrl, "_blank");
+                setIsQuoteOpen(false);
+              }}
+            >
+              <QuoteInput name="name" label="Full Name" placeholder="John Doe" />
+              <QuoteInput name="email" label="Email Address" placeholder="john@example.com" />
+              <QuoteInput name="dest" label="Destination" placeholder="Select Destination" />
+              <QuoteInput name="phone" label="Phone Number" placeholder="+94" />
 
               <button
-                type="button"
+                type="submit"
                 className="w-full h-[46px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[14px] font-bold rounded-[6px] flex items-center justify-center gap-3 transition"
               >
                 <Send size={17} />
-                Send Message
+                Send.
               </button>
             </form>
           </div>
@@ -147,9 +162,11 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
 function QuoteInput({
   label,
   placeholder,
+  name,
 }: {
   label: string;
   placeholder: string;
+  name?: string;
 }) {
   return (
     <div>
@@ -158,6 +175,7 @@ function QuoteInput({
       </label>
 
       <input
+        name={name}
         placeholder={placeholder}
         className="w-full h-[44px] bg-[#f3f4f6] border border-gray-200 rounded-[6px] px-4 text-[13px] outline-none"
       />

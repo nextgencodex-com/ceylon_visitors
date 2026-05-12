@@ -27,6 +27,7 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
           alt="Sri Lankan temple art"
           fill
           className="object-cover"
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-[#071a24]/65" />
@@ -50,91 +51,85 @@ function AboutContent({ desktop = false }: { desktop?: boolean }) {
       </section>
 
       {/* ================= STORY SECTION ================= */}
-      <section className="relative px-5 md:px-[105px] py-[65px]">
+      <section className="relative px-5 md:px-[105px] py-[80px]">
         <div
-          className={`grid gap-[65px] items-center ${
+          className={`grid gap-[80px] items-center ${
             desktop ? "grid-cols-2" : "grid-cols-1"
           }`}
         >
           {/* Left Text */}
-          <div>
-            <h2 className="font-serif text-[24px] font-bold text-[#071a24]">
-              Our Story
-            </h2>
+          <div className="space-y-6">
+            <div>
+              <h2 className="font-serif text-[32px] md:text-[40px] font-bold text-[#071a24] leading-tight">
+                Crafting Memories in <br/> Sri Lanka
+              </h2>
+              <div className="w-[60px] h-[3px] bg-[#d8b62f] mt-4 mb-2" />
+            </div>
 
-            <div className="w-[58px] h-[3px] bg-[#d8b62f] mt-4 mb-7" />
-
-            <p className="text-[13px] leading-[22px] text-[#4b5563] mb-5">
+            <p className="text-[14px] leading-[26px] text-[#4b5563]">
               We are a Sri Lanka-based travel service dedicated to providing
               safe, comfortable, and memorable journeys for visitors from around
               the world.
             </p>
 
-            <p className="text-[13px] leading-[22px] text-[#4b5563] mb-5">
+            <p className="text-[14px] leading-[26px] text-[#4b5563]">
               Founded with a passion for sharing the beauty of our island home,
               Ceylon Visitors has grown into a trusted partner for travelers
               seeking authentic experiences without compromising on comfort or
-              safety.
+              safety. From our golden beaches to the ancient heritage sites and 
+              lush highlands, we organize itineraries that inspire awe.
             </p>
 
-            <p className="text-[13px] leading-[22px] text-[#4b5563] mb-8">
+            <p className="text-[14px] leading-[26px] text-[#4b5563] pb-2">
               Whether you’re here for a quick business trip, a romantic
               honeymoon, or a month-long exploration, our team is committed to
               making your time in Sri Lanka truly unforgettable.
             </p>
 
-            <h3 className="font-serif text-[18px] font-bold mb-5">
-              Why Trust Us
-            </h3>
+            <div className="bg-gray-50 border border-gray-100 rounded-xl p-6 md:p-8 mt-4">
+              <h3 className="font-serif text-[22px] font-bold mb-6 text-[#071a24]">
+                Why Trust Ceylon Visitors?
+              </h3>
 
-            <div className="grid grid-cols-2 gap-y-4 text-[13px] font-semibold text-[#071a24]">
-              {[
-                "Experienced drivers",
-                "Clean, modern vehicles",
-                "Transparent pricing",
-                "Local expertise",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <CheckCircle size={15} className="text-[#d8b62f]" />
-                  {item}
-                </div>
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[14px] font-semibold text-[#273444]">
+                {[
+                  "Experienced Tour Guides",
+                  "Modern, A/C Vehicles",
+                  "Transparent Pricing",
+                  "24/7 Local Support",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle size={18} className="text-[#d8b62f] flex-shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right Images */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <div className="relative h-[170px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/yala.jpg" alt="" fill className="object-cover" />
+          {/* Right Images Grid */}
+          <div className="grid grid-cols-2 gap-5 relative">
+            <div className="space-y-5">
+              <div className="relative h-[220px] rounded-2xl overflow-hidden shadow-lg group">
+                <Image src="/images/About/yala.jpg" alt="Yala Safari" fill className="object-cover group-hover:scale-105 transition duration-700" sizes="(max-width: 768px) 50vw, 25vw" />
               </div>
 
-              <div className="relative h-[145px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/beach.jpg" alt="" fill className="object-cover" />
+              <div className="relative h-[280px] rounded-2xl overflow-hidden shadow-lg group">
+                <Image src="/images/About/beach.jpg" alt="Sri Lanka Beaches" fill className="object-cover group-hover:scale-105 transition duration-700" sizes="(max-width: 768px) 50vw, 25vw" />
               </div>
             </div>
 
-            <div className="space-y-4 mt-8">
-              <div className="relative h-[145px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/driver.jpg" alt="" fill className="object-cover" />
+            <div className="space-y-5 mt-12">
+              <div className="relative h-[280px] rounded-2xl overflow-hidden shadow-lg group">
+                <Image src="/images/About/driver.jpg" alt="Our Drivers" fill className="object-cover group-hover:scale-105 transition duration-700" sizes="(max-width: 768px) 50vw, 25vw" />
               </div>
 
-              <div className="relative h-[170px] rounded-[8px] overflow-hidden">
-                <Image src="/images/About/temple-red.jpg" alt="" fill className="object-cover" />
+              <div className="relative h-[220px] rounded-2xl overflow-hidden shadow-lg group">
+                <Image src="/images/About/temple-red.jpg" alt="Cultural Sites" fill className="object-cover group-hover:scale-105 transition duration-700" sizes="(max-width: 768px) 50vw, 25vw" />
               </div>
             </div>
           </div>
         </div>
-
-        {/* WhatsApp Floating Button */}
-        <a
-          href="https://wa.me/94713807185"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute right-8 top-1/2 w-[42px] h-[42px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg"
-        >
-          <MessageCircle size={22} />
-        </a>
       </section>
     </>
   );

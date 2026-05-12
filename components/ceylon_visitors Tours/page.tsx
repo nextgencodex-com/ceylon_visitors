@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Clock, MessageCircle } from "lucide-react";
+import { toursData } from "@/data/tours";
 
 export default function CeylonVisitorsTours() {
   return (
@@ -21,51 +22,25 @@ export default function CeylonVisitorsTours() {
 }
 
 function ToursPage({ desktop = false }: { desktop?: boolean }) {
-  const whatsapp = "https://wa.me/94713807185";
+  const tours = toursData.map((tour) => {
+    // Generate highlights dynamically from the itinerary or description
+    const highlights = tour.itinerary?.length > 0 
+      ? tour.itinerary.slice(0, 4).map((i) => i.location.split(' to ').pop() || i.location)
+      : ["Perfect blend of heritage and culture", "Scenic landscapes", "Cultural immersion", "Memorable journey"];
 
-  const tours = [
-    {
-      title: "7 Days Classic Sri Lanka Tour",
-      price: "$450",
-      badge: "Most Popular",
-      img: "/images/tours/1.jpg",
-      route: "Colombo → Kandy → Ella → Yala → Galle",
-      duration: "7 Days / 6 Nights",
-      highlights: [
-        "Sigiriya Rock",
-        "Train Ride in Ella",
-        "Safari in Yala",
-        "Beach stay in South",
-      ],
-    },
-    {
-      title: "5 Days Hill Country Escape",
-      price: "$320",
-      img: "/images/tours/2.jpg",
-      route: "Kandy → Nuwara Eliya → Ella",
-      duration: "5 Days / 4 Nights",
-      highlights: [
-        "Temple of the Tooth",
-        "Tea Plantations",
-        "Waterfalls",
-        "Scenic Train Ride",
-      ],
-    },
-    {
-      title: "3 Days South Coast Tour",
-      price: "$200",
-      badge: "Limited Availability",
-      img: "/images/tours/3.jpg",
-      route: "Galle → Mirissa → Bentota",
-      duration: "3 Days / 2 Nights",
-      highlights: [
-        "Galle Fort",
-        "Whale Watching",
-        "Turtle Hatchery",
-        "Pristine Beaches",
-      ],
-    },
-  ];
+    let badge = "";
+    if (tour.title === "Hill country Tour") badge = "Most Popular";
+    if (tour.title === "Classic Sri Lanka Tour") badge = "Must Try";
+
+    return {
+      id: tour.id,
+      title: tour.title,
+      badge,
+      img: tour.images?.[0] || "/images/tours/1.jpg",
+      duration: tour.duration,
+      highlights,
+    };
+  });
 
   return (
     <>
@@ -76,6 +51,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
           alt="Tours Hero"
           fill
           className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#071a24]/65" />
 
@@ -101,7 +77,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
           desktop ? "grid-cols-3" : "grid-cols-1"
         }`}
       >
-        {[...tours, ...tours].map((tour, i) => (
+        {tours.map((tour, i) => (
           <div
             key={i}
             className="bg-white rounded-[10px] overflow-hidden shadow-sm"
@@ -112,6 +88,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
                 alt={tour.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
 
               {tour.badge && (
@@ -132,16 +109,9 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
                 {tour.title}
               </h3>
 
-              <p className="text-[#20d969] text-[13px] font-bold mb-3">
-                From {tour.price}
-              </p>
-
-              <div className="text-[12px] text-gray-500 mb-3 space-y-1">
-                <p className="flex items-center gap-2">
-                  <MapPin size={13} /> {tour.route}
-                </p>
-                <p className="flex items-center gap-2">
-                  <Clock size={13} /> {tour.duration}
+              <div className="text-[12px] text-gray-500 mb-3 mt-3 space-y-1">
+                <p className="flex items-center gap-2 font-medium text-black">
+                  <Clock size={15} className="text-[#d8b62f]" /> {tour.duration}
                 </p>
               </div>
 
@@ -154,7 +124,7 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
               </ul>
 
               <Link
-                href="/ceylon_visitors_TourDetails"
+                href={`/ceylon_visitors_TourDetails/${tour.id}`}
                 className="w-full h-[38px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
               >
                 Read More
@@ -163,16 +133,6 @@ function ToursPage({ desktop = false }: { desktop?: boolean }) {
           </div>
         ))}
       </section>
-
-      {/* Floating WhatsApp */}
-      <a
-        href={whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed right-6 bottom-6 z-50 w-[46px] h-[46px] rounded-full bg-[#20d969] text-white flex items-center justify-center shadow-lg"
-      >
-        <MessageCircle size={23} />
-      </a>
     </>
   );
 }

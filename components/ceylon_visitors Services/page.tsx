@@ -2,52 +2,26 @@
 
 import Image from "next/image";
 import { Plane, Car, Sun, Map, MessageCircle } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function CeylonVisitorsServices() {
-  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const handler = (e: MediaQueryListEvent | MediaQueryList) =>
-      setIsDesktop((e as any).matches ?? false);
-    // set initial
-    setIsDesktop(mq.matches);
-    // add listener (modern + fallback)
-    if (typeof mq.addEventListener === "function") {
-      mq.addEventListener("change", handler as any);
-      return () => mq.removeEventListener("change", handler as any);
-    } else {
-      // older browsers
-      // @ts-ignore
-      mq.addListener(handler as any);
-      return () => {
-        // @ts-ignore
-        mq.removeListener(handler as any);
-      };
-    }
-  }, []);
-
-  if (isDesktop === null) return null;
-
   return (
     <main className="bg-[#f4f4f4] text-[#071a24]">
-      {isDesktop ? (
-        <section>
-          <ServicesPage desktop />
-        </section>
-      ) : (
-        <section className="max-w-[390px] mx-auto mt-20 border border-gray-300">
-          <ServicesPage />
-        </section>
-      )}
+      {/* Desktop View - only desktop */}
+      <section className="hidden md:block">
+        <ServicesPage desktop />
+      </section>
+
+      {/* Mobile View - only mobile */}
+      <section className="block md:hidden">
+        <ServicesPage />
+      </section>
     </main>
   );
 }
 
 function ServicesPage({ desktop = false }: { desktop?: boolean }) {
   const whatsappLink =
-    "https://wa.me/94713807185?text=Hello, I want to book a ride.";
+    "https://wa.me/94771303301?text=Hello, I want to book a ride.";
 
   const services = [
     {
@@ -97,6 +71,7 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
           alt=""
           fill
           className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#071a24]/70" />
 
@@ -118,26 +93,28 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
 
       {/* ================= CARDS ================= */}
       <section
-        className={`px-5 md:px-[90px] py-[60px] grid gap-[30px] ${
+        className={`px-5 md:px-[105px] py-[60px] grid gap-[30px] ${
           desktop ? "grid-cols-2" : "grid-cols-1"
         }`}
       >
         {services.map((s, i) => (
-          <div key={i} className="bg-white rounded-[10px] p-[28px] shadow-sm">
-            <div className="w-[42px] h-[42px] bg-[#f3f4f6] rounded-[8px] flex items-center justify-center mb-5">
-              <s.icon size={20} />
+          <div key={i} className="bg-white rounded-[12px] p-[30px] shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+            <div className="w-[48px] h-[48px] bg-[#f8f9fa] group-hover:bg-[#1597ff] group-hover:text-white transition-colors duration-300 rounded-[10px] flex items-center justify-center mb-4">
+              <s.icon size={24} className="text-[#071a24] group-hover:text-white transition-colors duration-300" />
             </div>
 
-            <h3 className="font-serif text-[20px] font-bold mb-3">{s.title}</h3>
+            <h3 className="font-serif text-[22px] font-bold mb-3 text-[#071a24]">{s.title}</h3>
+            
+            <div className="w-[30px] h-[2px] bg-[#d8b62f] mb-4" />
 
-            <p className="text-[13px] text-[#4b5563] mb-4 leading-[22px]">
+            <p className="text-[14px] text-[#4b5563] mb-5 leading-[24px] min-h-[48px]">
               {s.desc}
             </p>
 
-            <ul className="text-[13px] mb-5 space-y-2">
+            <ul className="text-[13px] mb-6 space-y-3 font-medium text-[#273444]">
               {s.points.map((p) => (
                 <li key={p} className="flex items-center gap-2">
-                  <span className="w-[5px] h-[5px] bg-[#d8b62f] rounded-full" />
+                  <div className="w-[5px] h-[5px] bg-[#d8b62f] rounded-full flex-shrink-0" />
                   {p}
                 </li>
               ))}
@@ -146,9 +123,10 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
             <a
               href={whatsappLink}
               target="_blank"
-              className="w-full h-[42px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[13px] font-bold rounded-[5px] flex items-center justify-center gap-2 transition"
+              rel="noopener noreferrer"
+              className="w-full h-[46px] bg-[#f8f9fa] hover:bg-[#10d65c] text-[#071a24] hover:text-white font-bold text-[14px] rounded-[6px] flex items-center justify-center gap-2 transition duration-300 border border-gray-200 hover:border-transparent"
             >
-              <MessageCircle size={15} />
+              <MessageCircle size={16} />
               Book via WhatsApp
             </a>
           </div>
@@ -156,13 +134,15 @@ function ServicesPage({ desktop = false }: { desktop?: boolean }) {
       </section>
 
       {/* ================= CTA BUTTON ================= */}
-      <div className="text-center pb-[60px]">
+      <div className="text-center pb-[70px]">
         <a
           href={whatsappLink}
-          className="inline-flex items-center justify-center w-[240px] h-[50px] bg-[#20d969] hover:bg-[#18c75e] text-white font-bold text-[14px] rounded-[4px]"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-8 h-[54px] bg-[#10d65c] hover:bg-[#0fc955] text-white font-bold text-[15px] rounded-full shadow-lg transition duration-300 transform hover:-translate-y-1"
         >
-          <MessageCircle size={18} />
-          Book Your Ride Now
+          <MessageCircle size={18} className="mr-2" />
+          Request a Custom Service
         </a>
       </div>
     </>

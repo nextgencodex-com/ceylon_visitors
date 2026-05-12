@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer({ desktop = false }: { desktop?: boolean }) {
   return (
-    <footer className="bg-[#f4f4f4] px-5 md:px-[90px] py-[60px] text-[#6b7280]">
+    <footer className="bg-[#f4f4f4] border-t border-gray-300 px-5 md:px-[90px] py-[60px] text-[#6b7280]">
       <div className="grid gap-10 grid-cols-1 md:grid-cols-4">
         {/* About */}
         <div>
@@ -30,7 +30,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
         {/* Quick Links */}
         <FooterColumn
           title="Quick Links"
-          items={["Home", "Tours", "Services", "About", "Reviews", "Contact"]}
+          items={["Home", "Tours", "Services", "About", "Gallery", "Contact"]}
         />
 
         {/* Services */}
@@ -59,7 +59,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
 
             <div className="flex items-center gap-3">
               <Phone size={16} className="text-[#d8b62f]" />
-              +94 71 380 7185
+              +94 77 130 3301
             </div>
 
             <div className="flex items-center gap-3">
@@ -71,12 +71,18 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
       </div>
 
       {/* Bottom */}
-      <div className="mt-[50px] pt-[20px] border-t border-gray-300 flex flex-col md:flex-row justify-between text-[12px]">
-        <p>© 2026 Ceylon Visitors. All rights reserved.</p>
+      <div className="mt-[50px] pt-[20px] border-t border-gray-300 text-[12px]">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:items-center">
+          <p className="text-center md:text-left">© 2026 Ceylon Visitors. All rights reserved.</p>
 
-        <div className="flex gap-6 mt-3 md:mt-0">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <p className="text-center font-semibold text-gray-500">
+            By NextGen CodeX (PVT) LTD
+          </p>
+
+          <div className="flex justify-center md:justify-end gap-6 font-medium">
+            <Link href="/privacy-policy" className="hover:text-[#071a24] transition">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-[#071a24] transition">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
@@ -99,8 +105,13 @@ function FooterColumn({ title, items }: any) {
             Tours: "/ceylon_visitors_Tours",
             Services: "/ceylon_visitors_Services",
             About: "/ceylon_visitors_About",
-            Reviews: "/ceylon_visitors_Reviews",
+            Gallery: "/ceylon_visitors_Gallery",
             Contact: "/ceylon_visitors_Contact",
+            "Airport Transfers": "/ceylon_visitors_Services",
+            "Chauffeur Services": "/ceylon_visitors_Services",
+            "Day Tours": "/ceylon_visitors_Services",
+            "Multi-Day Packages": "/ceylon_visitors_Services",
+            "Custom Itineraries": "/ceylon_visitors_Services",
           };
 
           return (
