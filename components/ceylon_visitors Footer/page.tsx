@@ -14,7 +14,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
             unforgettable journeys across the beautiful island of Sri Lanka.
           </p>
 
-          <div className="flex gap-3">
+          {/* <div className="flex gap-3">
             <IconBox>
               <Globe size={14} />
             </IconBox>
@@ -24,7 +24,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
             <IconBox>
               <Send size={14} />
             </IconBox>
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Links */}
@@ -54,7 +54,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
           <div className="space-y-4 text-[13px]">
             <div className="flex items-center gap-3">
               <MapPin size={16} className="text-[#d8b62f]" />
-              Colombo, Sri Lanka
+              101/B, Kahatapitiya, Hanwella, Colombo
             </div>
 
             <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
 
             <div className="flex items-center gap-3">
               <Mail size={16} className="text-[#d8b62f]" />
-              hello@ceylonvisitors.com
+              ceylonvisitortours@gmail.com
             </div>
           </div>
         </div>
