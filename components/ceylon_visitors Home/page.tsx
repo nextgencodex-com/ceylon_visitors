@@ -73,14 +73,17 @@ function Hero({ desktop = false }: { desktop?: boolean }) {
 
   return (
     <section className={`relative overflow-hidden rounded-[34px] mx-5 md:mx-[88px] ${desktop ? "h-[750px]" : "h-[580px]"}`}>
-      <Image
-        src="/images/hero.png"
-        alt="Sri Lanka train journey"
-        fill
-        priority
-        className="object-cover"
-        sizes="(max-width: 768px) calc(100vw - 2.5rem), calc(100vw - 11rem)"
-      />
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/images/hero.png"
+      >
+        <source src="/images/Hero1.mp4" type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-[#071a24]/65" />
 
