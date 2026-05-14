@@ -45,6 +45,8 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
         {/* Mobile Dropdown */}
         {isMenuOpen && (
           <div className="absolute top-[58px] left-0 right-0 bg-white border-b border-gray-100 shadow-lg py-5 px-5 flex flex-col gap-4">
+            {/* Language switcher temporarily disabled */}
+
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -98,13 +100,17 @@ export default function Header({ desktop = false }: { desktop?: boolean }) {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setIsQuoteOpen(true)}
-          className="h-[40px] w-[112px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
-        >
-          Get A Quote
-        </button>
+        <div className="flex items-center gap-3">
+          {/* Language switcher temporarily disabled */}
+
+          <button
+            type="button"
+            onClick={() => setIsQuoteOpen(true)}
+            className="h-[40px] w-[112px] bg-[#1597ff] hover:bg-[#057ddd] text-white text-[12px] font-bold rounded-[4px] flex items-center justify-center transition"
+          >
+            Get A Quote
+          </button>
+        </div>
       </header>
 
       {/* Get A Quote Popup */}
