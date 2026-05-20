@@ -76,7 +76,7 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
           <p className="text-center md:text-left">© 2026 Ceylon Visitors. All rights reserved.</p>
 
           <p className="text-center font-semibold text-gray-500">
-            By NextGen CodeX (PVT) LTD
+            Developed By NextGen CodeX (PVT) LTD
           </p>
 
           <div className="flex justify-center md:justify-end gap-6 font-medium">
