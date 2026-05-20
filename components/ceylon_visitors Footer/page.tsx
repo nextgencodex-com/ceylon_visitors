@@ -76,8 +76,16 @@ export default function Footer({ desktop = false }: { desktop?: boolean }) {
           <p className="text-center md:text-left">© 2026 Ceylon Visitors. All rights reserved.</p>
 
           <p className="text-center font-semibold text-gray-500">
-            Developed By NextGen CodeX (PVT) LTD
-          </p>
+  Developed By{" "}
+  <a
+    href="https://wa.me/94759627589"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-green-600 hover:text-green-700 hover:underline"
+  >
+    NextGen CodeX (PVT) LTD
+  </a>
+</p>
 
           <div className="flex justify-center md:justify-end gap-6 font-medium">
             <Link href="/privacy-policy" className="hover:text-[#071a24] transition">Privacy Policy</Link>
